@@ -33,6 +33,7 @@ class Dog
       @id = DB[:conn].execute("SELECT id FROM dogs WHERE name = (?)", @name)[0][0]
       @saved = true
     end
+    return self
   end
 
 end
