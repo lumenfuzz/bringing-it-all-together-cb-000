@@ -51,6 +51,11 @@ class Dog
       end
   end
 
+  def self.find_by_name(name)
+    row = DB[:conn].execute("SELECT * FROM dogs WHERE name = ?", name)[0]
+    return self.new_from_db(row)
+  end
+
   def save
     if @saved
       DB[:conn].execute("UPDATE dogs SET name = ? WHERE id = ?", @name, @id)
