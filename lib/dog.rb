@@ -9,9 +9,9 @@ class Dog
   end
 
   def self.create(name: , breed:)
-  dog = self.new(name: name, breed: breed)
-  dog.save
-end
+    dog = self.new(name: name, breed: breed)
+    dog.save
+  end
 
   def self.create_table
     sql = <<-SQL
@@ -29,6 +29,14 @@ end
     sql = "DROP TABLE IF EXISTS dogs"
     DB[:conn].execute(sql)
   end
+
+  def self.find_by_id(id)
+  # find the student in the database given a name
+  # return a new instance of the Student class
+  row = DB[:conn].execute("SELECT * FROM dogs WHERE id = (?)", id)[0]
+  dog = self.new_from_db(row)
+  return dog
+end
 
   def save
     if @saved
