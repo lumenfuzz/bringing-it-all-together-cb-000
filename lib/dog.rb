@@ -67,4 +67,8 @@ class Dog
     return self
   end
 
+  def update
+    self.save
+  end
+
 end
