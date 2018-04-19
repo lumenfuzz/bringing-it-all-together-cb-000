@@ -29,8 +29,8 @@ class Dog
     if @saved
       DB[:conn].execute("UPDATE dogs SET name = ? WHERE id = ?", @name, @id)
     else
-      DB[:conn].execute("INSERT INTO students (name, grade) VALUES (?, ?)", @name, @grade)
-      @id = DB[:conn].execute("SELECT id FROM students WHERE name = (?)", @name)[0][0]
+      DB[:conn].execute("INSERT INTO dogs (name, breed) VALUES (?, ?)", @name, @breed)
+      @id = DB[:conn].execute("SELECT id FROM dogs WHERE name = (?)", @name)[0][0]
       @saved = true
     end
   end
