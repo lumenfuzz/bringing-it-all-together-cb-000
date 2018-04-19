@@ -30,6 +30,10 @@ class Dog
     DB[:conn].execute(sql)
   end
 
+  def self.new_from_db(row)
+    self.new(id: row[0], name: row[1], breed: row[2])
+  end
+
   def self.find_by_id(id)
   # find the student in the database given a name
   # return a new instance of the Student class
