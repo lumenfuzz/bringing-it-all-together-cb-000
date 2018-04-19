@@ -43,7 +43,7 @@ class Dog
   end
 
   def self.find_or_create_by(name:, breed:)
-        row = DB[:conn].execute("SELECT * FROM dogs WHERE name = ? AND breed = ?", name, breed)[0]
+      row = DB[:conn].execute("SELECT * FROM dogs WHERE name = ? AND breed = ?", name, breed)[0]
   end
 
   def save
