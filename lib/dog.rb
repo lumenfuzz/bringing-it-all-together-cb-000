@@ -35,12 +35,16 @@ class Dog
   end
 
   def self.find_by_id(id)
-  # find the student in the database given a name
-  # return a new instance of the Student class
-  row = DB[:conn].execute("SELECT * FROM dogs WHERE id = (?)", id)[0]
-  dog = self.new_from_db(row)
-  return dog
-end
+    # find the student in the database given a name
+    # return a new instance of the Student class
+    row = DB[:conn].execute("SELECT * FROM dogs WHERE id = (?)", id)[0]
+    dog = self.new_from_db(row)
+    return dog
+  end
+
+  def self.find_or_create_by(name:, breed:)
+        row = DB[:conn].execute("SELECT * FROM dogs WHERE name = ? AND breed = ?", name, breed)[0]
+  end
 
   def save
     if @saved
